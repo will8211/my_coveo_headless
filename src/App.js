@@ -1,8 +1,7 @@
 import { Fragment, Component } from "react";
 import Tabs from "./components/tabs/tabs.jsx";
 import ResultsList from "./components/resultsList/resultsList";
-import MySearchBox from "./components/searchBox/searchBox";
-import SearchBox from "./components/standaloneSearchBox/standaloneSearchBox.jsx";
+import SearchBox from "./components/SearchBox/SearchBox";
 
 class App extends Component {
   render() {

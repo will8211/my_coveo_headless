@@ -1,14 +1,10 @@
-import "./searchBox.css";
+import "./SearchBox.css";
+import React, { Component } from 'react';
 import { engine } from "../../engine";
-import { Component } from 'react';
 import { buildSearchBox } from "@coveo/headless";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-
-class MySearchBox extends Component {
+class SearchBox extends Component {
+  state = {}
 
   constructor(props) {
     super(props);
@@ -21,60 +17,37 @@ class MySearchBox extends Component {
   }
 
   componentDidMount() {
-    this.headlessSearchBox.subscribe(() => this.updateState());
-  }
-
-  updateState() {
-    this.setState(this.headlessSearchBox.state);
-  }
-
-  selectOnFocus(e) {
-    const value = e.target.value;
-    this.headlessSearchBox.selectSuggestion(value);
+    this.headlessSearchBox.subscribe(() => this.setState(this.headlessSearchBox.state))
   }
 
   render() {
     return (
-      <div className="row justify-content-center main rounded">
-        <div className="col-12 col-md-10 col-lg-8">
-          <div className="card card-sm" onSubmit={this.handleSubmit}>
-            <div className="card-body row no-gutters align-items-center">
-              <div className="col-auto">
-                <FontAwesomeIcon icon={faSearch} size="lg" />
-              </div>
-              <div className="col">
-                <Autocomplete
-                  inputValue={this.state.value}
-                  onInputChange={(event, newInputValue) => {
-                    this.headlessSearchBox.updateText(newInputValue);
-                  }}
-                  onClick={(e) => this.selectOnFocus(e)}
-                  onChange={() => {
-                    this.headlessSearchBox.submit();
-                  }}
-                  onFocus={() => {
-                    this.headlessSearchBox.showSuggestions();
-                  }}
-                  id="ReactSearchHeadless"
-                  freeSolo
-                  options={this.state.suggestions.map(
-                    (suggestion) => suggestion.rawValue
-                  )}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      margin="normal"
-                      variant="filled"
-                    />
-                  )}
-                />
-              </div>
-            </div>
-          </div>
+      <div className="card mt-5">
+        <div className="card-body">
+          <h5 className="card-title">Standalone Search Box</h5>
+          <input
+            type="text"
+            className="form-control m-1"
+            value={this.state.value}
+            id="StandaloneSearchBox"
+            onChange={(event) => {
+              console.log('Updated text');
+              this.headlessSearchBox.updateText(event.target.value);
+              this.setState({value: event.target.value});
+            }}
+          />
+          <button className="btn btn-primary m-1" onClick={this.headlessSearchBox.submit}>Submit</button>
+          <button className="btn btn-primary m-1" onClick={this.headlessSearchBox.clear}>Clear</button>
+          <h5>Suggestions</h5>
+          {this.state.suggestions.map((suggestion) => (
+            <p>
+              {suggestion.rawValue}
+            </p>
+          ))}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default MySearchBox;
+export default SearchBox;

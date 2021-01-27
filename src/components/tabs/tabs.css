@@ -1,0 +1,8 @@
+.activeTab {
+  text-decoration: underline !important;
+  color: #007bff !important;
+}
+
+.navbar {
+  font-weight: bold;
+}

@@ -3,6 +3,8 @@ import ResultsList from "./components/ResultsList/ResultsList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import Facet from "./components/Facet/Facet";
 import Tabs from "./components/Tabs/Tabs";
+import QuerySummary from "./components/QuerySummary/QuerySummary";
+import Pager from "./components/Pager/Pager";
 class App extends Component {
   render() {
     return (
@@ -18,6 +20,8 @@ class App extends Component {
               <Facet />
             </div>
             <div className="col-9">
+              <QuerySummary />
+              <Pager />
               <ResultsList />
             </div>
           </div>

@@ -41,9 +41,7 @@ export const templates = [
             <div className="container">
               <div className="row">
                 <div className="col-2">
-                  <div className="icon-container">
-                    <img src={pdfIcon} width="64px"/>
-                  </div>
+                  <img src={pdfIcon} width="64px" />
                 </div>
                 <div className="col-10">
                   <p>{result.excerpt}</p>

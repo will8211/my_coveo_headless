@@ -2,7 +2,7 @@ import { Fragment, Component } from "react";
 import ResultsList from "./components/ResultsList/ResultsList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import Facet from "./components/Facet/Facet";
-import Tabs from "./components/tabs/tabs";
+import Tabs from "./components/Tabs/Tabs";
 class App extends Component {
   render() {
     return (

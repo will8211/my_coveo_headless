@@ -6,3 +6,11 @@
 .navbar {
   font-weight: bold;
 }
+
+button.nav-item {
+  font-weight: bold !important;
+}
+
+.navbar-dark {
+  background-color: #3B3939 !important;
+}

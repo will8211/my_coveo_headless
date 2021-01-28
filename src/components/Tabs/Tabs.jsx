@@ -22,7 +22,7 @@ class Tabs extends Component {
 
   render() {
     return (
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-sm navbar-dark">
         <a class="navbar-brand" href="#">
           <img class="js-o-header__logo o-header__logo" src="https://cdn-assets-us.frontify.com/s3/frontify-enterprise-files-us/eyJwYXRoIjoiY292ZW9cL2FjY291bnRzXC8xM1wvNDAwMDI0NVwvcHJvamVjdHNcLzE0XC9hc3NldHNcLzRkXC8xNTA3XC83ZWYwYzNiNWRlMTNlNmU2MmQxZTFmZDY0YmU5YTljNi0xNjA4MTYyNzI4LnBuZyJ9:coveo:EXBbRJeSAFgtqJLa9dHSiTUROMitJYTLDrBi0xNEnH8?width=100" alt="Coveo Brand Playbook" />
         </a>

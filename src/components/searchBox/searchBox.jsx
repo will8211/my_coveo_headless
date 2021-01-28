@@ -51,7 +51,7 @@ class SearchBox extends Component {
                 className="btn btn-outline-secondary"
                 onClick={this.headlessSearchBox.clear}
               >
-                ✕
+                Clear ✕
               </button>
             </div>
           </div>

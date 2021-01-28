@@ -1,0 +1,7 @@
+.btn-outline-secondary {
+  background-color: #ffffff !important;
+}
+
+.btn-outline-secondary:hover {   
+  color: black !important;
+}

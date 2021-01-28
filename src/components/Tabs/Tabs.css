@@ -1,0 +1,16 @@
+.activeTab {
+  text-decoration: underline !important;
+  color: #007bff !important;
+}
+
+.navbar {
+  font-weight: bold;
+}
+
+button.nav-item {
+  font-weight: bold !important;
+}
+
+.navbar-dark {
+  background-color: #3B3939 !important;
+}

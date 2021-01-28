@@ -3,11 +3,7 @@ import { engine } from "../../engine";
 import { Component } from 'react';
 import { buildTab } from "@coveo/headless";
 
-class Tab extends Component {
-
-  tabExpression;
-  label;
-  defaultTab;
+class Tabs extends Component {
 
   constructor(props) {
     super(props);
@@ -21,38 +17,24 @@ class Tab extends Component {
   }
 
   componentDidMount() {
-    this.headlessTab.subscribe(() => this.updateState());
-  }
-
-  updateState() {
-    this.setState(this.headlessTab.state);
-  }
-
-  handleChange(event) {
-    this.headlessTab.select();
+    this.headlessTab.subscribe(() => this.setState(this.headlessTab.state));
   }
 
   render() {
     return (
-      <Tab
-        value={this.props.label}
-        label={this.props.label}
-        className={this.state.isActive ? "activeTab" : ""}
-        onFocus={(e) => {
-          this.handleChange(e);
-        }}
-      />
-    );
-  }
-}
-
-class Tabs extends Component {
-  render() {
-    return (
-      <nav className="navbar navbar-light bg-light">
-        <Tab tabExpression="" label="All Content" defaultTab={true} />
-        <Tab tabExpression="@filetype==youtubevideo" label="Youtube" />
-        <Tab tabExpression="@sfid" label="Salesforce" />
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+          </div>
+        </div>
       </nav>
     );
   }

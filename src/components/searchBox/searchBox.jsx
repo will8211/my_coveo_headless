@@ -2,10 +2,8 @@ import "./SearchBox.css";
 import React, { Component } from 'react';
 import { engine } from "../../engine";
 import { buildSearchBox } from "@coveo/headless";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 class SearchBox extends Component {
-  state = {}
 
   constructor(props) {
     super(props);
@@ -15,6 +13,7 @@ class SearchBox extends Component {
     };
     this.headlessSearchBox = buildSearchBox(engine, { options });
     this.state = this.headlessSearchBox.state;
+    this.state.searchAsYouType = false;
   }
 
   componentDidMount() {
@@ -23,24 +22,75 @@ class SearchBox extends Component {
 
   render() {
     return (
-      <div className="card mt-5">
+      <div className="card mt-3">
         <div className="card-body">
-          <h5 className="card-title font-weight-bold">Standalone Search Box</h5>
-          <input
-            type="text"
-            className="form-control m-1"
-            value={this.state.value}
-            id="StandaloneSearchBox"
-            onChange={(e) => this.headlessSearchBox.updateText(e.target.value)}
-            onKeyUp={(e) => e.key === 'Enter' && this.headlessSearchBox.submit()}
-          />
-          <button className="btn btn-primary m-1" onClick={this.headlessSearchBox.submit}>Submit</button>
-          <button className="btn btn-primary m-1" onClick={this.headlessSearchBox.clear}>Clear</button>
-          <br />
-          {this.state.suggestions.length > 0 && <span>Suggestions:</span>}
-          {this.state.suggestions.map((suggestion) => (
-            <a><span className="badge badge-secondary m-1">{suggestion.rawValue}</span></a>
-          ))}
+          <h5 className="card-title font-weight-bold">Search Box</h5>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <button
+                className="btn btn-primary"
+                onClick={this.headlessSearchBox.submit}
+                disabled={this.state.searchAsYouType}
+              >
+                Submit
+              </button>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              value={this.state.value}
+              id="StandaloneSearchBox"
+              onChange={(e) => {
+                this.headlessSearchBox.updateText(e.target.value);
+                this.state.searchAsYouType && this.headlessSearchBox.submit();
+              }}
+              onKeyUp={(e) => e.key === 'Enter' && this.headlessSearchBox.submit()}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={this.headlessSearchBox.clear}
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+          {this.state.suggestions.length > 0 ? <span>Suggestions: </span> : <span> &nbsp;</span>}
+          {this.state.suggestions.map((suggestion) =>
+          (
+            <button 
+              key={Math.random().toString()}
+              className="btn badge badge-secondary m-1"
+              onClick={() => {
+                this.headlessSearchBox.updateText(suggestion.rawValue);
+                this.headlessSearchBox.submit();
+              }}
+            >
+              {suggestion.rawValue}
+            </button>
+          )
+          )}
+          <div className="form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="searchAsYouType"
+              onChange={() => this.setState({ searchAsYouType: !this.state.searchAsYouType })}
+            />
+            <label className="form-check-label" htmlFor="searchAsYouType">Search as you type</label>
+          </div>
+          <button
+            className="btn btn-secondary m-1"
+            onClick={this.headlessSearchBox.showSuggestions}
+          >
+            Show suggestions
+          </button>
+          <button
+            className="btn btn-secondary m-1"
+            onClick={this.headlessSearchBox.hideSuggestions}
+          >
+            Hide suggestions
+          </button>
         </div>
       </div>
     )

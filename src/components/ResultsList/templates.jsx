@@ -1,5 +1,7 @@
 import { ResultAnalyticsActions, ResultTemplatesHelpers } from "@coveo/headless";
 import { engine } from "../../engine";
+import pdfIcon from './icons/pdf.svg';
+
 
 export const templates = [
   {
@@ -39,7 +41,7 @@ export const templates = [
             <div className="container">
               <div className="row">
                 <div className="col-2">
-                  <img src={process.env.PUBLIC_URL + '/icons/pdf.svg'} width="64" alt="pdf icon"/>
+                  <img src={pdfIcon} width="64" alt="pdf icon"/>
                 </div>
                 <div className="col-10">
                   <p>{result.excerpt}</p>

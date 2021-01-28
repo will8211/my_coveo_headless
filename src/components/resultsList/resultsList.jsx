@@ -1,5 +1,5 @@
 import "./ResultsList.css";
-import { templates } from "./ResultTemplates";
+import { templates } from "./templates";
 import { engine } from "../../engine";
 import { Component, Fragment } from 'react';
 import { buildResultList, buildResultTemplatesManager } from "@coveo/headless";

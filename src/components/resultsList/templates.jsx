@@ -8,7 +8,7 @@ export const templates = [
     content: (result) => (
       <div className="card mt-3" key={Math.random().toString()}>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item active text-primary"
+          <li className="list-group-item active font-weight-bold"
             onClick={() => {
               engine.dispatch(ResultAnalyticsActions.logDocumentOpen(result));
               window.open(`${result.ClickUri}`, "_blank");
@@ -29,17 +29,27 @@ export const templates = [
     priority: 2,
     content: (result) => (
       <div className="card mt-3" key={Math.random().toString()}>
-        <ul className="list-group list-group-flush active">
-          <li className="list-group-item active"
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item active font-weight-bold"
             onClick={() => window.open(`${result.ClickUri}`, "_blank")}
           >
             {result.title}
           </li>
           <li className="list-group-item">
-            pdf template goes here
-        </li>
+            <div className="container">
+              <div className="row">
+                <div className="col-2">
+                  <img src={process.env.PUBLIC_URL + '/icons/pdf.svg'} width="64" />
+                </div>
+                <div className="col-10">
+                  <p>{result.excerpt}</p>
+                </div>
+              </div>
+            </div>
+            <p>{dateFromTimestamp(result.raw.date)}</p>
+          </li>
         </ul>
-      </div>
+      </div >
     )
   }]
 

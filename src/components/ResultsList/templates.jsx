@@ -41,7 +41,7 @@ export const templates = [
             <div className="container">
               <div className="row">
                 <div className="col-2">
-                  <img src={pdfIcon} width="64px" />
+                  <img src={pdfIcon} width="64px" alt="pdf" />
                 </div>
                 <div className="col-10">
                   <p>{result.excerpt}</p>

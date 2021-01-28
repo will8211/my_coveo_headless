@@ -1,6 +1,6 @@
 import { ResultAnalyticsActions, ResultTemplatesHelpers } from "@coveo/headless";
 import { engine } from "../../engine";
-import { ReactComponent as PdfIcon } from './icons/pdf.svg';
+import pdfIcon from './icons/pdf.png';
 
 
 export const templates = [
@@ -42,7 +42,7 @@ export const templates = [
               <div className="row">
                 <div className="col-2">
                   <div className="icon-container">
-                    <PdfIcon />
+                    <img src={pdfIcon} width="64px"/>
                   </div>
                 </div>
                 <div className="col-10">

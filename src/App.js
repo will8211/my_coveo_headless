@@ -16,13 +16,13 @@ class App extends Component {
         <br />
         <div className="container">
           <div className="row">
-            <div className="col-3">
-              <Facet />
-            </div>
-            <div className="col-9">
+            <div className="col-sm-9 order-sm-2">
               <QuerySummary />
               <Pager />
               <ResultsList />
+            </div>
+            <div className="col-sm-3 order-sm-1">
+              <Facet />
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import QuerySummary from "./components/QuerySummary/QuerySummary";
 import ResultsList from "./components/ResultsList/ResultsList";
 import Pager from "./components/Pager/Pager";
 import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
-import Facet from "./components/Facet/Facet";
+import NumericFacets from "./components/NumericFacet/NumericFacet";
 import coveoLogo from "./coveo_logo.png";
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
               </div>
             </div>
             <div className="col-md-3 order-md-1">
-              <Facet />
+              <NumericFacets />
             </div>
           </div>
         </div>

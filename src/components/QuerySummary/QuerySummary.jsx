@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { buildQuerySummary } from '@coveo/headless';
 import { engine } from "../../engine";
+import { buildQuerySummary } from '@coveo/headless';
 import './QuerySummary.css'
 
 class QuerySummary extends Component {

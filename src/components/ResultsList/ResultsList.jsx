@@ -12,11 +12,15 @@ class ResultsList extends Component {
     this.headlessResultList = buildResultList(engine, { options });
     this.state = this.headlessResultList.state;
     this.headlessResultListManager = buildResultTemplatesManager(engine);
-    templates.map((template) => this.headlessResultListManager.registerTemplates(template));
+    templates.map((template) => {
+      this.headlessResultListManager.registerTemplates(template);
+    });
   }
 
   componentDidMount() {
-    this.headlessResultList.subscribe(() => this.setState(this.headlessResultList.state));
+    this.headlessResultList.subscribe(() => {
+      this.setState(this.headlessResultList.state);
+    });
   }
 
   render() {

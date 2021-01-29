@@ -1,6 +1,7 @@
 import { ResultAnalyticsActions, ResultTemplatesHelpers } from "@coveo/headless";
 import { engine } from "../../engine";
 import pdfIcon from './icons/pdf.png';
+import youtubeIcon from './icons/youtube.png';
 
 
 export const templates = [
@@ -32,7 +33,8 @@ export const templates = [
     content: (result) => (
       <div className="card mt-3" key={Math.random().toString()}>
         <ul className="list-group list-group-flush">
-        <button className="list-group-item active font-weight-bold text-left"
+          <button
+            className="list-group-item active font-weight-bold text-left"
             onClick={() => window.open(result.ClickUri, "_blank")}
           >
             {result.title}
@@ -53,12 +55,40 @@ export const templates = [
         </ul>
       </div >
     )
-  }]
+  },
+  {
+    conditions: [ResultTemplatesHelpers.fieldMustMatch("filetype", ["youtubevideo"])],
+    priority: 2,
+    content: (result) => (
+      <div className="card mt-3" key={Math.random().toString()}>
+        <ul className="list-group list-group-flush">
+          <button
+            className="list-group-item active font-weight-bold text-left"
+            onClick={() => window.open(result.ClickUri, "_blank")}
+          >
+            {result.title}
+          </button>
+          <li className="list-group-item">
+            <div className="container">
+              <div className="row">
+                <div className="col-2">
+                  <img src={youtubeIcon} className="img-fluid" width="64px" alt="pdf" />
+                </div>
+                <div className="col-10">
+                  <p>{result.excerpt}</p>
+                </div>
+              </div>
+            </div>
+            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
+          </li>
+        </ul>
+      </div >
+    )
+  },
+]
 
-function dateFromTimestamp(timestampStr) {
+let dateFromTimestamp = (timestampStr) => {
   let timestamp = parseInt(timestampStr)
   let date = new Date(timestamp);
-  let formattedTime = date.toLocaleString();
-
-  return (formattedTime);
+  return date.toLocaleString();
 }

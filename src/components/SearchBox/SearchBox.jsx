@@ -19,7 +19,9 @@ class SearchBox extends Component {
   }
 
   componentDidMount() {
-    this.headlessSearchBox.subscribe(() => this.setState(this.headlessSearchBox.state));
+    this.headlessSearchBox.subscribe(() => {
+      this.setState(this.headlessSearchBox.state);
+    })
     this.headlessSearchBox.submit();
   }
 
@@ -100,7 +102,9 @@ class SearchBox extends Component {
             type="checkbox"
             className="form-check-input"
             id="searchAsYouType"
-            onChange={() => this.setState({ searchAsYouType: !this.state.searchAsYouType })}
+            onChange={() => {
+              this.setState({ searchAsYouType: !this.state.searchAsYouType })
+            }}
           />
 
           <label
@@ -116,11 +120,11 @@ class SearchBox extends Component {
     return (
       <div className="card mt-3">
         <div className="card-body">
-            {this.renderTextInput()}
-            {this.renderSuggestions()}
-            {this.renderSearchControl()}
-          </div>
+          {this.renderTextInput()}
+          {this.renderSuggestions()}
+          {this.renderSearchControl()}
         </div>
+      </div>
     )
   }
 }

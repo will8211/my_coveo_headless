@@ -18,22 +18,23 @@ class Facet extends Component {
   render() {
     if (this.state.hasResults) {
       return (
-      <div className="card mt-3">
-        <div className="card-body">
-          <h5 className="card-title font-weight-bold">Facet</h5>
-          <div className="form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="someFacet"
-            />
-            <label className="form-check-label" htmlFor="someFacet">Placeholder</label>
+        <div className="card mt-3">
+          <div className="card-body">
+            <h5 className="card-title font-weight-bold">Facet</h5>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="someFacet"
+              />
+              <label className="form-check-label" htmlFor="someFacet">Placeholder</label>
+            </div>
           </div>
         </div>
-      </div>
-      )} else {
-        return null;
-      };
+      )
+    } else {
+      return null;
+    };
   }
 }
 

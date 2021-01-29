@@ -14,7 +14,9 @@ class ResultsPerPage extends Component {
   }
 
   componentDidMount() {
-    this.headlessResultsPerPage.subscribe(() => this.setState(this.headlessResultsPerPage.state));
+    this.headlessResultsPerPage.subscribe(() => {
+      this.setState(this.headlessResultsPerPage.state);
+    });
   }
 
   renderButtons() {
@@ -22,9 +24,12 @@ class ResultsPerPage extends Component {
     return this.choices.map((choice) => (
       <button
         key={"setTo" + choice}
-        className={this.headlessResultsPerPage.isSetTo(choice) ? classes + "btn-primary" : classes + "btn-secondary"}
+        className={this.headlessResultsPerPage.isSetTo(choice)
+          ? classes + "btn-primary"
+          : classes + "btn-secondary"}
         onClick={() => {
-          !this.headlessResultsPerPage.isSetTo(choice) && this.headlessResultsPerPage.set(choice)
+          !this.headlessResultsPerPage.isSetTo(choice)
+            && this.headlessResultsPerPage.set(choice)
         }}
       >{choice}</button>
     ))

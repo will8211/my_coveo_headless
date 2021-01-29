@@ -121,8 +121,16 @@ class SearchBox extends Component {
       <div className="card mt-3">
         <div className="card-body">
           {this.renderTextInput()}
-          {this.renderSuggestions()}
-          {this.renderSearchControl()}
+          <div className="row">
+            <div className="col-md-8">
+              {this.renderSuggestions()}
+            </div>
+            <div className="col-md-4">
+              <span className="float-right">
+                {this.renderSearchControl()}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     )

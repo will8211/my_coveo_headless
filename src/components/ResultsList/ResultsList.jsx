@@ -1,11 +1,10 @@
-import { Component, Fragment } from 'react';
+import { Component, Fragment } from "react";
 import { engine } from "../../engine";
 import { buildResultList, buildResultTemplatesManager } from "@coveo/headless";
 import { templates } from "./templates";
 import "./ResultsList.css";
 
 class ResultsList extends Component {
-
   constructor(props) {
     super(props);
     const options = { fieldsToInclude: ["@date", "filetype", "author"] };
@@ -13,7 +12,7 @@ class ResultsList extends Component {
     this.state = this.headlessResultList.state;
     this.headlessResultListManager = buildResultTemplatesManager(engine);
     templates.map((template) => {
-      this.headlessResultListManager.registerTemplates(template);
+      return this.headlessResultListManager.registerTemplates(template);
     });
   }
 

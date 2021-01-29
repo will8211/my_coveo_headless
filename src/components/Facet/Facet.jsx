@@ -2,7 +2,6 @@ import { Component } from 'react';
 import { engine } from "../../engine";
 import { buildQuerySummary } from "@coveo/headless";
 
-
 class Facet extends Component {
 
   constructor(props) {

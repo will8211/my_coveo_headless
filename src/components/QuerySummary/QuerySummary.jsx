@@ -18,8 +18,8 @@ class QuerySummary extends Component {
   }
 
   render() {
-    const { firstResult, lastResult, query, durationInSeconds, total, hasResults,
-      hasQuery } = this.state;
+    const { firstResult, lastResult, query, durationInSeconds, total, 
+      hasResults, hasQuery } = this.state;
 
     if (hasResults) {
       return (

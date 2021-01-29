@@ -3,7 +3,6 @@ import { engine } from "../../engine";
 import { buildPager } from '@coveo/headless';
 import './Pager.css'
 
-
 class Pager extends Component {
 
   constructor(props) {
@@ -14,7 +13,9 @@ class Pager extends Component {
   }
 
   componentDidMount() {
-    this.headlessPager.subscribe(() => this.setState(this.headlessPager.state));
+    this.headlessPager.subscribe(() => {
+      this.setState(this.headlessPager.state)
+    });
   }
 
   renderButtons() {
@@ -22,7 +23,8 @@ class Pager extends Component {
     return currentPages.map((p) => (
       <button
         key={"page" + p}
-        className={"btn btn-sm m-1 " + (p === currentPage ? "btn-primary" : "btn-secondary")}
+        className={"btn btn-sm m-1 " + 
+                   (p === currentPage ? "btn-primary" : "btn-secondary")}
         onClick={() => { this.headlessPager.selectPage(p) }}
       >{p}</button>
     ))

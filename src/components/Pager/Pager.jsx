@@ -26,7 +26,9 @@ class Pager extends Component {
         className={"btn btn-sm btn-round m-1 " + 
                    (p === currentPage ? "btn-primary" : "btn-secondary")}
         onClick={() => { this.headlessPager.selectPage(p) }}
-      ><span className="btn-text">{p}</span></button>
+      >
+        <span className="btn-text">{p}</span>
+      </button>
     ))
   }
 

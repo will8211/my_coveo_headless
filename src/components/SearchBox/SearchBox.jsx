@@ -1,7 +1,7 @@
-import "./SearchBox.css";
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { engine } from "../../engine";
 import { buildSearchBox } from "@coveo/headless";
+import "./SearchBox.css";
 
 class SearchBox extends Component {
 
@@ -80,13 +80,13 @@ class SearchBox extends Component {
             <label className="form-check-label" htmlFor="searchAsYouType">Search as you type</label>
           </div>
           <button
-            className="btn btn-secondary m-1"
+            className="btn btn-sm btn-secondary m-1"
             onClick={this.headlessSearchBox.showSuggestions}
           >
             Show suggestions
           </button>
           <button
-            className="btn btn-secondary m-1"
+            className="btn btn-sm btn-secondary m-1"
             onClick={this.headlessSearchBox.hideSuggestions}
           >
             Hide suggestions

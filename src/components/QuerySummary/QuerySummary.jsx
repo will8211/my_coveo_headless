@@ -1,7 +1,7 @@
+import { Component } from 'react';
 import { buildQuerySummary } from '@coveo/headless';
-import React, { Component } from 'react';
-import './QuerySummary.css'
 import { engine } from "../../engine";
+import './QuerySummary.css'
 
 class QuerySummary extends Component {
 
@@ -19,7 +19,7 @@ class QuerySummary extends Component {
     const { firstResult, lastResult, total, query, durationInSeconds, hasResults } = this.state;
     if (hasResults) {
       return (
-            <p className="small summary-p">{total} results for "{query}". Showing results {firstResult} to {lastResult}. Search took {durationInSeconds} seconds. {hasResults}</p>
+            <p className="small summary-p">Results <span className="font-weight-bold">{firstResult}-{lastResult}</span> for <span className="font-weight-bold">{query}</span> in {durationInSeconds} seconds</p>
       )
     } else {
       return null;

@@ -17,11 +17,7 @@ class App extends Component {
           <Tabs />
         </nav>
         <div className="container">
-          <div className="row justify-content-lg-center">
-            <div className="col-lg-9 col-md-12">
-              <SearchBox />
-            </div>
-          </div>
+          <SearchBox />
           <br />
           <div className="row">
             <div className="col-md-9 order-md-2">

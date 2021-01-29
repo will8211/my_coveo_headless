@@ -1,7 +1,7 @@
-import { buildResultsPerPage } from '@coveo/headless';
-import React, { Component } from 'react';
-import './ResultsPerPage.css'
+import { Component } from 'react';
 import { engine } from "../../engine";
+import { buildResultsPerPage } from '@coveo/headless';
+import './ResultsPerPage.css'
 
 class ResultsPerPage extends Component {
 

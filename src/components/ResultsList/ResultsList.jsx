@@ -26,9 +26,9 @@ class ResultsList extends Component {
   render() {
     return (
       <Fragment>
-        {this.state.results.map((result) => {
-          const template = this.headlessResultListManager.selectTemplate(result);
-          return template ? template(result) : null;
+        {this.state.results.map((res) => {
+          const template = this.headlessResultListManager.selectTemplate(res);
+          return template ? template(res) : null;
         })}
       </Fragment>
     );

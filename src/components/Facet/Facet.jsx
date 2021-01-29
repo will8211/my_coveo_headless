@@ -12,7 +12,9 @@ class Facet extends Component {
   }
 
   componentDidMount() {
-    this.headlessQuerySummary.subscribe(() => this.setState(this.headlessQuerySummary.state));
+    this.headlessQuerySummary.subscribe(() => {
+      this.setState(this.headlessQuerySummary.state)
+    });
   }
 
   render() {
@@ -27,7 +29,32 @@ class Facet extends Component {
                 className="form-check-input"
                 id="someFacet"
               />
-              <label className="form-check-label" htmlFor="someFacet">Placeholder</label>
+              <label
+                className="form-check-label"
+                htmlFor="someFacet"
+              >Placeholder</label>
+            </div>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="someFacet"
+              />
+              <label
+                className="form-check-label"
+                htmlFor="someFacet"
+              >Placeholder</label>
+            </div>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="someFacet"
+              />
+              <label
+                className="form-check-label"
+                htmlFor="someFacet"
+              >Placeholder</label>
             </div>
           </div>
         </div>

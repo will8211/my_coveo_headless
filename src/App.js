@@ -6,6 +6,7 @@ import Tabs from "./components/Tabs/Tabs";
 import QuerySummary from "./components/QuerySummary/QuerySummary";
 import Pager from "./components/Pager/Pager";
 import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
+
 class App extends Component {
   render() {
     return (

@@ -7,6 +7,7 @@ import Pager from "./components/Pager/Pager";
 import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
 import Facet from "./components/Facet/Facet";
 import coveoLogo from "./coveo_logo.png";
+
 class App extends Component {
   render() {
     return (

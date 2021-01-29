@@ -1,7 +1,7 @@
-import "./Tabs.css";
-import { engine } from "../../engine";
 import { Component } from 'react';
+import { engine } from "../../engine";
 import { buildTab } from "@coveo/headless";
+import "./Tabs.css";
 
 class Tab extends Component {
 

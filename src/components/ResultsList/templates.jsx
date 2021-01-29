@@ -10,17 +10,17 @@ export const templates = [
     content: (result) => (
       <div className="card mt-3" key={Math.random().toString()}>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item active font-weight-bold"
+          <button className="list-group-item active font-weight-bold text-left"
             onClick={() => {
               engine.dispatch(ResultAnalyticsActions.logDocumentOpen(result));
-              window.open(`${result.ClickUri}`, "_blank");
+              window.open(result.ClickUri, "_blank");
             }}
           >
             {result.title}
-          </li>
+          </button>
           <li className="list-group-item">
             <p>Excerpt: {result.excerpt}</p>
-            <p>Date: {dateFromTimestamp(result.raw.date)}</p>
+            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
           </li>
         </ul>
       </div>
@@ -32,23 +32,23 @@ export const templates = [
     content: (result) => (
       <div className="card mt-3" key={Math.random().toString()}>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item active font-weight-bold"
-            onClick={() => window.open(`${result.ClickUri}`, "_blank")}
+        <button className="list-group-item active font-weight-bold text-left"
+            onClick={() => window.open(result.ClickUri, "_blank")}
           >
             {result.title}
-          </li>
+          </button>
           <li className="list-group-item">
             <div className="container">
               <div className="row">
                 <div className="col-2">
-                  <img src={pdfIcon} width="64px" alt="pdf" />
+                  <img src={pdfIcon} className="img-fluid" width="64px" alt="pdf" />
                 </div>
                 <div className="col-10">
                   <p>{result.excerpt}</p>
                 </div>
               </div>
             </div>
-            <p>{dateFromTimestamp(result.raw.date)}</p>
+            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
           </li>
         </ul>
       </div >

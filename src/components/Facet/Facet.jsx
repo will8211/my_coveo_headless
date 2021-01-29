@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { engine } from "../../engine";
 import { buildQuerySummary } from "@coveo/headless";
 

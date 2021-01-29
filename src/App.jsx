@@ -2,6 +2,7 @@ import { Fragment, Component } from "react";
 import Tabs from "./components/Tabs/Tabs";
 import SearchBox from "./components/SearchBox/SearchBox";
 import QuerySummary from "./components/QuerySummary/QuerySummary";
+import QueryError from "./components/QueryError/QueryError";
 import Sort from "./components/Sort/Sort";
 import ResultsList from "./components/ResultsList/ResultsList";
 import Pager from "./components/Pager/Pager";
@@ -30,6 +31,7 @@ class App extends Component {
                   <Sort />
                 </div>
               </div>
+              <QueryError />
               <ResultsList />
               <div className="row m-1 d-flex justify-content-between">
                 <Pager />

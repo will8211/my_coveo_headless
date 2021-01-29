@@ -1,31 +1,20 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import { engine } from "../../engine";
-import { buildNumericFacet } from "@coveo/headless";
-import './Facet.css'
+import { buildNumericFacet, buildNumericRange } from "@coveo/headless";
+import './NumericFacet.css'
 
-class Facet extends Component {
+class NumericFacet extends Component {
   constructor(props) {
     super(props);
     const options = {
       field: props.field,
       facetId: props.facetId,
-      numberOfValues: 4,
+      numberOfValues: props.numberOfValues,
       generateAutomaticRanges: props.generateAutomaticRanges,
-      currentValues: [
-        buildNumericRange({
-          start: 0,
-          end: 1000
-        }),
-        buildNumericRange({
-          start: 1001,
-          end: 10000
-        }),
-        buildNumericRange({
-          start: 10001,
-          end: 10000
-        })
-      ]
+      currentValues: props.currentValues
     };
+    this.title = props.title;
+    this.facetId = props.facetId;
     this.headlessNumericFacet = buildNumericFacet(engine, { options });
     this.state = this.headlessNumericFacet.state;
   }
@@ -36,48 +25,58 @@ class Facet extends Component {
     });
   }
 
+  renderCheckboxes() {
+    return this.state.values.map((value, i) => (
+      <div
+        className="form-check"
+        key={this.facetId + i}
+      >
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id={this.facetId + i}
+          onChange={() => this.headlessNumericFacet.toggleSelect(value)}
+        />
+        <label 
+          className="form-check-label small" 
+          htmlFor={this.facetId + i}
+        >
+          {value.start} - {value.end}
+        </label>
+      </div>
+    ))
+  }
+
   render() {
     return (
       <div className="card mt-3">
         <div className="card-body">
-          <h5 className="card-title font-weight-bold">
-            Numeric Facet
-            </h5>
-          <div className="form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="someFacet"
-            />
-            <label className="form-check-label" htmlFor="someFacet">
-              Placeholder
-              </label>
-          </div>
-          <div className="form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="someFacet"
-            />
-            <label className="form-check-label" htmlFor="someFacet">
-              Placeholder
-              </label>
-          </div>
-          <div className="form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="someFacet"
-            />
-            <label className="form-check-label" htmlFor="someFacet">
-              Placeholder
-              </label>
-          </div>
+          <h6 className="card-title font-weight-bold">
+            {this.title}
+          </h6>
+          {this.renderCheckboxes()}
         </div>
       </div>
     );
   }
 }
-
-
-export default Facet;
+export default class NumericFacets extends Component {
+  render() {
+    return (
+      <Fragment>
+        <NumericFacet
+          title="Youtube Views"
+          field="ytviewcount"
+          facetId="ytviewcount_numeric"
+          numberOfValues={3}
+          generateAutomaticRanges={false}
+          currentValues={[
+            buildNumericRange({ start: 0, end: 999 }),
+            buildNumericRange({ start: 1000, end: 9999 }),
+            buildNumericRange({ start: 10000, end: 99999 })
+          ]}
+        />
+      </Fragment>
+    )
+  }
+}

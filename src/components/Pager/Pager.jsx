@@ -23,10 +23,10 @@ class Pager extends Component {
     return currentPages.map((p) => (
       <button
         key={"page" + p}
-        className={"btn btn-sm m-1 " + 
+        className={"btn btn-sm btn-round m-1 " + 
                    (p === currentPage ? "btn-primary" : "btn-secondary")}
         onClick={() => { this.headlessPager.selectPage(p) }}
-      >{p}</button>
+      ><span className="btn-text">{p}</span></button>
     ))
   }
 
@@ -36,14 +36,14 @@ class Pager extends Component {
     return (
       <div>
         {currentPage !== 1 && <button
-          className="btn btn-sm btn-secondary m-1"
+          className="btn btn-sm btn-round m-1 btn-secondary"
           onClick={() => { this.headlessPager.selectPage(1) }}
         >{"⇤"}</button>}
 
         {this.renderButtons()}
 
         {currentPage !== maxPage && currentPages.length > 0 && <button
-          className="btn btn-sm btn-secondary m-1"
+          className="btn btn-sm btn-round m-1 btn-secondary"
           onClick={() => { this.headlessPager.selectPage(maxPage) }}
         >{"⇥"}</button>}
       </div>

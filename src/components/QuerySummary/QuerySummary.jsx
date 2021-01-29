@@ -16,10 +16,15 @@ class QuerySummary extends Component {
   }
 
   render() {
-    const { firstResult, lastResult, total, query, durationInSeconds, hasResults } = this.state;
+    const { firstResult, lastResult, query, durationInSeconds, hasResults, total } = this.state;
     if (hasResults) {
       return (
-            <p className="small summary-p">Results <span className="font-weight-bold">{firstResult}-{lastResult}</span> for <span className="font-weight-bold">{query}</span> in {durationInSeconds} seconds</p>
+        <p className="small summary-p">
+          Results <span className="font-weight-bold"> {firstResult}-{lastResult} </span>
+          of <span className="font-weight-bold"> {total} </span>
+          for <span className="font-weight-bold"> {query} </span>
+          in {durationInSeconds} seconds
+        </p>
       )
     } else {
       return null;

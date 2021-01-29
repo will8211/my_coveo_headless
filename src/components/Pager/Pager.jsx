@@ -8,21 +8,21 @@ class Pager extends Component {
 
   constructor(props) {
     super(props);
-    const options = { numberOfPages: 30 };
-    this.headlessPager = buildPager(engine, options);
+    const options = { numberOfPages: 4 }
+    this.headlessPager = buildPager(engine, { options });
     this.state = this.headlessPager.state;
   }
 
   componentDidMount() {
     this.headlessPager.subscribe(() => this.setState(this.headlessPager.state));
-    window.scrollTo(0, 0);
   }
 
-  resolveButtons() {
+  renderButtons() {
     const { currentPage, currentPages } = this.state;
     return currentPages.map((p) => (
       <button
-        className={"btn btn-sm m-1 " + (p === currentPage ? "btn-primary": "btn-secondary")}
+        key={"page" + p}
+        className={"btn btn-sm m-1 " + (p === currentPage ? "btn-primary" : "btn-secondary")}
         onClick={() => { this.headlessPager.selectPage(p) }}
       >{p}</button>
     ))
@@ -38,7 +38,7 @@ class Pager extends Component {
           onClick={() => { this.headlessPager.selectPage(1) }}
         >{"⇤"}</button>}
 
-        {this.resolveButtons()}
+        {this.renderButtons()}
 
         {currentPage !== maxPage && currentPages.length > 0 && <button
           className="btn btn-sm btn-secondary m-1"

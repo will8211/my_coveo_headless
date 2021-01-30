@@ -69,30 +69,38 @@ class Sort extends Component {
         <button
           className={`${classes}${criteria.startsWith('date')
             ? 'primary' : 'secondary'}`}
-          onClick={this.sortByDateAscending}
+          onClick={criteria.startsWith('date') ?
+            this.sortByDateAscending :
+            this.sortByDateDescending}
           hidden={this.state.dateReversed}
-        >Date ↓</button>
+        >Date ▽</button>
 
         <button
           className={`${classes}${criteria.startsWith('date')
             ? 'primary' : 'secondary'}`}
-          onClick={this.sortByDateDescending}
+          onClick={criteria.startsWith('date') ?
+            this.sortByDateDescending :
+            this.sortByDateAscending}
           hidden={!this.state.dateReversed}
-        >Date ↑</button>
+        >Date △</button>
 
         <button
           className={`${classes}${criteria.startsWith('@size')
             ? 'primary' : 'secondary'}`}
-          onClick={this.sortBySizeAscending}
+          onClick={criteria.startsWith('@size') ?
+            this.sortBySizeAscending :
+            this.sortBySizeDescending}
           hidden={this.state.sizeReversed}
-        >Size ↓</button>
+        >Size ▽</button>
 
         <button
           className={`${classes}${criteria.startsWith('@size')
             ? 'primary' : 'secondary'}`}
-          onClick={this.sortBySizeDescending}
+          onClick={criteria.startsWith('@size') ?
+            this.sortBySizeDescending :
+            this.sortBySizeAscending}
           hidden={!this.state.sizeReversed}
-        >Size ↑</button>
+        >Size △</button>
       </Fragment>
     )
   }

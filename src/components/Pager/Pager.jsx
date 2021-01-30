@@ -7,14 +7,25 @@ class Pager extends Component {
   constructor(props) {
     super(props);
     const options = { numberOfPages: 4 };
-    this.headlessPager = buildPager(engine, { options });
+    const initialState = { page: 1 };
+    this.headlessPager = buildPager(engine, { options, initialState });
     this.state = this.headlessPager.state;
+    this.state.currentMaxpage = this.state.maxPage;
   }
 
   componentDidMount() {
     this.headlessPager.subscribe(() => {
       this.setState(this.headlessPager.state);
     });
+  }
+
+  // This resets the pager to page one when a new search occurs. Hack: won't
+  // work if the result happens to be the same number of pages.
+  componentDidUpdate() {
+    if (this.state.currentMaxpage !== this.state.maxPage) {
+      this.headlessPager.selectPage(1);
+      this.setState({ currentMaxpage: this.state.maxPage});
+    }
   }
 
   renderButtons() {

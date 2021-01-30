@@ -23,8 +23,8 @@ export const templates = [
           </button>
           <li className="list-group-item">
             <p>Excerpt: {result.excerpt}</p>
-            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
-            <p className="small">Filetype: {result.raw.filetype}</p>
+            <span className="small">Date: {dateFromTimestamp(result.raw.date)}</span><br />
+            <span className="small">Filetype: {result.raw.filetype}</span>
           </li>
         </ul>
       </div>
@@ -53,8 +53,8 @@ export const templates = [
                 </div>
               </div>
             </div>
-            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
-            <p className="small">Filetype: {result.raw.filetype}</p>
+            <span className="small">Date: {dateFromTimestamp(result.raw.date)}</span><br />
+            <span className="small">Filetype: {result.raw.filetype}</span>
           </li>
         </ul>
       </div >
@@ -83,8 +83,8 @@ export const templates = [
                 </div>
               </div>
             </div>
-            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
-            <p className="small">Filetype: {result.raw.filetype}</p>
+            <span className="small">Date: {dateFromTimestamp(result.raw.date)}</span><br />
+            <span className="small">Filetype: {result.raw.filetype}</span>
           </li>
         </ul>
       </div >
@@ -113,8 +113,8 @@ export const templates = [
                 </div>
               </div>
             </div>
-            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
-            <p className="small">Filetype: {result.raw.filetype}</p>
+            <span className="small">Date: {dateFromTimestamp(result.raw.date)}</span><br />
+            <span className="small">Filetype: {result.raw.filetype}</span>
           </li>
         </ul>
       </div >
@@ -143,8 +143,8 @@ export const templates = [
                 </div>
               </div>
             </div>
-            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
-            <p className="small">Filetype: {result.raw.filetype}</p>
+            <span className="small">Date: {dateFromTimestamp(result.raw.date)}</span><br />
+            <span className="small">Filetype: {result.raw.filetype}</span>
           </li>
         </ul>
       </div >
@@ -173,8 +173,8 @@ export const templates = [
                 </div>
               </div>
             </div>
-            <p className="small">Date: {dateFromTimestamp(result.raw.date)}</p>
-            <p className="small">Filetype: {result.raw.filetype}</p>
+            <span className="small">Date: {dateFromTimestamp(result.raw.date)}</span><br />
+            <span className="small">Filetype: {result.raw.filetype}</span>
           </li>
         </ul>
       </div >

@@ -27,7 +27,7 @@ class Tab extends Component {
   }
 
   render() {
-    const classes = "btn nav-item nav-link ";
+    const classes = "btn nav-item nav-link m-2 ";
     return (
       <button
         className={this.state.isActive ? classes + "active" : classes}

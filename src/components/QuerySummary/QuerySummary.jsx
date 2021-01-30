@@ -5,8 +5,8 @@ import './QuerySummary.css'
 
 class QuerySummary extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.headlessQuerySummary = buildQuerySummary(engine);
     this.state = this.headlessQuerySummary.state;
   }
@@ -18,24 +18,35 @@ class QuerySummary extends Component {
   }
 
   render() {
-    const { firstResult, lastResult, query, durationInSeconds, total, 
-      hasResults, hasQuery } = this.state;
+    const { firstResult, lastResult, query, durationInSeconds, total,
+      hasQuery } = this.state;
+    let summary;
 
-    if (hasResults) {
-      return (
-        <p className="small summary-p">
+    if (total === 0) {
+      summary = (
+        <span>
+          <span className="font-weight-bold">0</span>{" results "}
+        </span>
+      )
+    } else {
+      summary = (
+        <span>
           Results
           <span className="font-weight-bold"> {firstResult}-{lastResult} </span>
           of
           <span className="font-weight-bold"> {total} </span>
-          {hasQuery && "for"}
-          <span className="font-weight-bold"> {query} </span>
-          in {durationInSeconds} seconds
-        </p>
+        </span>
       )
-    } else {
-      return null;
     }
+
+    return (
+      <p className="small summary-p"> {summary}
+        {hasQuery && "for"}
+        <span className="font-weight-bold"> {query} </span>
+          in {durationInSeconds} seconds
+      </p>)
+
+
   }
 }
 

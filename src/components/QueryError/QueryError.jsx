@@ -7,8 +7,7 @@ class QueryError extends Component {
 
   constructor(props) {
     super(props);
-    const options = {};
-    this.headlessQueryError = buildQueryError(engine, { options });
+    this.headlessQueryError = buildQueryError(engine);
     this.state = this.headlessQueryError.state;
   }
 

@@ -1,5 +1,6 @@
 import { Fragment, Component } from "react";
 import Tabs from "./components/Tabs/Tabs";
+import History from "./components/History/History";
 import SearchBox from "./components/SearchBox/SearchBox";
 import QuerySummary from "./components/QuerySummary/QuerySummary";
 import QueryError from "./components/QueryError/QueryError";
@@ -14,9 +15,13 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-sm navbar-dark">
+        <nav className="navbar navbar-expand-sm navbar-dark 
+                        justify-content-between">
           <img className="navbar-brand" src={coveoLogo} alt="Coveo" />
           <Tabs />
+          <div className="nav-item nav-link">
+            <History />
+          </div>
         </nav>
         <div className="container">
           <SearchBox />

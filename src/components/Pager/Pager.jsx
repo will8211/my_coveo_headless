@@ -19,14 +19,15 @@ class Pager extends Component {
     });
   }
 
-  // This resets the pager to page one when a new search occurs. Hack: won't
-  // work if the result happens to be the same number of pages.
-  componentDidUpdate() {
-    if (this.state.currentMaxpage !== this.state.maxPage) {
-      this.headlessPager.selectPage(1);
-      this.setState({ currentMaxpage: this.state.maxPage});
-    }
-  }
+  // // This resets the pager to page one when a new search occurs. Hack: won't
+  // // work if the result happens to be the same number of pages. Also resets to 
+  // // page 1 on ResultsPerPage changes. 
+  // componentDidUpdate() {
+  //   if (this.state.currentMaxpage !== this.state.maxPage) {
+  //     this.headlessPager.selectPage(1);
+  //     this.setState({ currentMaxpage: this.state.maxPage });
+  //   }
+  // }
 
   renderButtons() {
     const { currentPage, currentPages } = this.state;

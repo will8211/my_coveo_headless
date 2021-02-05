@@ -1,27 +1,27 @@
-import { Component, Fragment } from "react";
-import { engine } from "../../engine";
-import { buildNumericFacet, buildNumericRange } from "@coveo/headless";
-import './NumericFacet.css'
+import { Component, Fragment } from 'react';
+import { engine } from "../../../engine";
+import { buildDateFacet, buildDateRange } from '@coveo/headless';
+import './DateFacet.css'
 
-class NumericFacet extends Component {
+class DateFacet extends Component {
+
   constructor(props) {
     super(props);
     const options = {
       field: props.field,
       facetId: props.facetId,
-      numberOfValues: props.numberOfValues,
       generateAutomaticRanges: props.generateAutomaticRanges,
       currentValues: props.currentValues
     };
     this.title = props.title;
     this.facetId = props.facetId;
-    this.headlessNumericFacet = buildNumericFacet(engine, { options });
-    this.state = this.headlessNumericFacet.state;
+    this.headlessDateFacet = buildDateFacet(engine, { options });
+    this.state = this.headlessDateFacet.state;
   }
 
   componentDidMount() {
-    this.headlessNumericFacet.subscribe(() => {
-      this.setState(this.headlessNumericFacet.state);
+    this.headlessDateFacet.subscribe(() => {
+      this.setState(this.headlessDateFacet.state);
     });
   }
 
@@ -35,13 +35,13 @@ class NumericFacet extends Component {
           type="checkbox"
           className="form-check-input"
           id={this.facetId + i}
-          onChange={() => this.headlessNumericFacet.toggleSelect(value)}
+          onChange={() => this.headlessDateFacet.toggleSelect(value)}
         />
-        <label 
-          className="form-check-label small" 
+        <label
+          className="form-check-label small"
           htmlFor={this.facetId + i}
         >
-          {value.start} - {value.end}
+          {value.start.split("/")[0]} - {value.end.split("/")[0]}
         </label>
       </div>
     ))
@@ -60,20 +60,21 @@ class NumericFacet extends Component {
     );
   }
 }
-export default class NumericFacets extends Component {
+
+export default class DateFacets extends Component {
   render() {
     return (
       <Fragment>
-        <NumericFacet
-          title="Youtube Views"
-          field="ytviewcount"
-          facetId="ytviewcount_numeric"
-          numberOfValues={3}
+        <DateFacet
+          title="Date Range"
+          field="date"
+          facetId="date"
           generateAutomaticRanges={false}
           currentValues={[
-            buildNumericRange({ start: 0, end: 999 }),
-            buildNumericRange({ start: 1000, end: 9999 }),
-            buildNumericRange({ start: 10000, end: 99999 })
+            buildDateRange({ start: "2005/01/01", end: "2009/12/31" }),
+            buildDateRange({ start: "2010/01/01", end: "2014/12/31" }),
+            buildDateRange({ start: "2015/01/01", end: "2019/12/31" }),
+            buildDateRange({ start: "2020/01/01", end: "2021/12/31" }),
           ]}
         />
       </Fragment>

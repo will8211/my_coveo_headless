@@ -8,8 +8,9 @@ import Sort from "./components/Sort/Sort";
 import ResultsList from "./components/ResultsList/ResultsList";
 import Pager from "./components/Pager/Pager";
 import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
-import NumericFacets from "./components/NumericFacet/NumericFacet";
+import NumericFacets from "./components/Facets/NumericFacet/NumericFacet";
 import coveoLogo from "./coveo_logo.png";
+import DateFacet from "./components/Facets/DateFacet/DateFacet";
 
 class App extends Component {
   render() {
@@ -45,6 +46,7 @@ class App extends Component {
             </div>
             <div className="col-md-3 order-md-1">
               <NumericFacets />
+              <DateFacet />
             </div>
           </div>
         </div>

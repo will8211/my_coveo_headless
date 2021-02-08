@@ -25,6 +25,10 @@ class NumericFacet extends Component {
     });
   }
 
+  numberWithCommas(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
   renderCheckboxes() {
     return this.state.values.map((value, i) => (
       <div
@@ -41,7 +45,7 @@ class NumericFacet extends Component {
           className="form-check-label small"
           htmlFor={this.facetId + i}
         >
-          {value.start} - {value.end}
+          {this.numberWithCommas(value.start)} - {this.numberWithCommas(value.end)}
         </label>
       </div>
     ))
@@ -72,9 +76,10 @@ export default class NumericFacets extends Component {
           numberOfValues={3}
           generateAutomaticRanges={false}
           currentValues={[
-            buildNumericRange({ start: 0, end: 999 }),
-            buildNumericRange({ start: 1000, end: 9999 }),
-            buildNumericRange({ start: 10000, end: 99999 })
+            buildNumericRange({ start: 0, end: 1000 }),
+            buildNumericRange({ start: 1000, end: 10_000 }),
+            buildNumericRange({ start: 10_000, end: 100_000 }),
+            buildNumericRange({ start: 100_000, end: 1_000_000 }),
           ]}
         />
       </Fragment>

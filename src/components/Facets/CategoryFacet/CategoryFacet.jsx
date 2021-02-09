@@ -21,6 +21,8 @@ class CategoryFacet extends Component {
     this.title = props.title
     this.headlessCategoryFacet = buildCategoryFacet(engine, { options });
     this.state = this.headlessCategoryFacet.state;
+    this.state.searchBoxValue = "";
+    this.state.showSuggestions = false;
   }
 
   componentDidMount() {
@@ -33,24 +35,16 @@ class CategoryFacet extends Component {
     return this.state.values.map((val, i) => (
       <Fragment key={this.id + i}>
         <button
-          className="btn btn-dark bg-transparent btn-sm"
+          className="btn btn-dark bg-transparent btn-sm text-left"
           onClick={() => this.headlessCategoryFacet.toggleSelect(val)}
-        >{val.value}</button>
+        >{val.value} ({val.numberOfResults})</button>
         <br />
       </Fragment>
     ))
   }
 
   renderMoreLessButtons() {
-    const buttons = Fragment;
     const classes = "btn btn-dark bg-transparent btn-sm font-weight-bold"
-
-    const moreButton = (
-      <button
-        className={classes}
-        onClick={() => this.headlessCategoryFacet.showMoreValues()}
-      >&nbsp;More ↓</button>
-    )
 
     const lessButton = (
       <button
@@ -59,10 +53,17 @@ class CategoryFacet extends Component {
       >&nbsp;Less ↑</button>
     )
 
+    const moreButton = (
+      <button
+        className={classes}
+        onClick={() => this.headlessCategoryFacet.showMoreValues()}
+      >&nbsp;More ↓</button>
+    )
+
     return (
       <Fragment>
-        {this.state.canShowMoreValues && moreButton}
         {this.state.canShowLessValues && lessButton}
+        {this.state.canShowMoreValues && moreButton}
       </Fragment>
     )
   }
@@ -72,8 +73,10 @@ class CategoryFacet extends Component {
       <Fragment>
         <button
           className="btn btn-dark bg-transparent btn-sm font-weight-bold"
-          onClick={() => this.headlessCategoryFacet.deselectAll()}
-        >&nbsp;← Reset</button>
+          onClick={() => {
+            this.headlessCategoryFacet.deselectAll();
+          }}
+        >&nbsp;← Back</button>
         <br />
       </Fragment>
     )
@@ -81,19 +84,74 @@ class CategoryFacet extends Component {
 
   renderSearchBox() {
     return (
-      <input
-        type="text"
-        className="form-control input-sm"
-        value={this.state.value}
-        onKeyUp={(e) => {
-          e.key === 'Enter' && this.headlessCategoryFacet.facetSearch.search();
-        }}
-        onChange={(e) => {
-          this.headlessCategoryFacet.facetSearch.updateText(e.target.value);
-          this.state.searchAsYouType && this.headlessCategoryFacet.facetSearch.search();
-        }}
-      />
+      <div className="search-container">
+        <input
+          type="text"
+          value={this.state.searchBoxValue}
+          className="form-control form-control-sm"
+          onFocus={() => {
+            this.state.searchBoxValue.length > 0 && this.setState({ showSuggestions: true });
+          }}
+          onKeyUp={(e) => {
+            e.key === 'Enter' &&
+              this.state.searchBoxValue.length > 0 &&
+              this.handleSuggestionClick(this.state.searchBoxValue);
+          }}
+          onChange={(e) => {
+            this.headlessCategoryFacet.facetSearch.updateText(e.target.value);
+            this.setState({ 'searchBoxValue': e.target.value });
+            this.setState({ showSuggestions: true });
+            this.headlessCategoryFacet.facetSearch.search();
+          }}
+        />
+        {this.renderSuggestions()}
+      </div>
     )
+  }
+
+  renderSuggestions() {
+    return (
+      <div className="suggestions">
+        {this.state.searchBoxValue.length > 0 &&
+          this.state.showSuggestions === true &&
+          this.state.facetSearch.values.map((val, i) => (
+            <Fragment>
+              <button
+                className="suggestion-item btn btn-secondary btn-sm text-left"
+                key={val.rawValue}
+                onClick={() => this.handleSuggestionClick(val)}
+              >{val.displayValue}</button>
+              <br />
+            </Fragment>
+          ))
+        }
+      </div>
+    )
+  }
+
+  handleSuggestionClick = (val) => {
+    this.headlessCategoryFacet.deselectAll();
+    const treeValue = this.searchResultToTreeValue(val);
+    this.headlessCategoryFacet.toggleSelect(treeValue);
+    this.setState({ 'showSuggestions': false });
+    this.setState({ 'searchBoxValue': val.rawValue });
+  }
+
+  searchResultToTreeValue(searchResult) {
+    const treeValue = {
+      children: [],
+      isLeafValue: true,
+      numberOfResults: searchResult.count,
+      path: searchResult.path.concat([searchResult.rawValue]),
+      value: searchResult.rawValue
+    };
+    console.log(treeValue.children);
+    console.log(treeValue.isLeafValue);
+    console.log(treeValue.numberOfResults);
+    console.log(treeValue.path);
+    console.log(treeValue.value);
+
+    return treeValue;
   }
 
   render() {
@@ -102,9 +160,11 @@ class CategoryFacet extends Component {
         <div className="card-body">
           <h6 className="card-title font-weight-bold">{this.title}</h6>
           {this.renderSearchBox()}
-          {this.renderBackButton()}
-          {this.renderValues()}
-          {this.renderMoreLessButtons()}
+          <div>
+            {this.renderBackButton()}
+            {this.renderValues()}
+            {this.renderMoreLessButtons()}
+          </div>
         </div>
       </div>
     )

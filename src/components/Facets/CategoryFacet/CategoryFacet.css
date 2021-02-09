@@ -1,0 +1,13 @@
+.suggestions {
+  background-color: #6C757D;
+  overflow: auto;
+  /* border: 1px solid #E1E1E1; */
+  border-radius: 0.2rem;
+  z-index: 2;
+  margin-top: 2px;
+  position: absolute;
+}
+
+.suggestion-item {
+  width: 100%
+}

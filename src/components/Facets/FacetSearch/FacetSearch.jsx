@@ -27,15 +27,14 @@ class FacetSearch extends Component {
         {this.state.searchBoxValue.length > 0 &&
           this.state.showSuggestions === true &&
           this.state.facetState.values.map((val, i) => (
-            <Fragment>
+            <Fragment key={i}>
               <button
                 className="suggestion-item btn btn-secondary btn-sm text-left"
-                key={'suggest' + i}
                 onClick={() => this.handleSuggestionClick(val)}
               >
                 {val.displayValue}
               </button>
-              <br key={'br' + i} />
+              <br />
             </Fragment>
           ))
         }

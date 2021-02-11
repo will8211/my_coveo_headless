@@ -70,14 +70,4 @@ class Facet extends Component {
   }
 }
 
-export default class Facets extends Component {
-  render() {
-    return (
-      <Facet
-        title="File Type"
-        field="filetype"
-        facetId="filetype"
-      />
-    )
-  }
-}
+export default Facet;

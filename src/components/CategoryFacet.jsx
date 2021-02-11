@@ -83,7 +83,6 @@ class CategoryFacet extends Component {
     )
   }
 
-
   handleSuggestionClick = (val) => {
     this.headlessCategoryFacet.deselectAll();
     this.headlessCategoryFacet.facetSearch.updateText(val.rawValue);
@@ -114,20 +113,4 @@ class CategoryFacet extends Component {
   }
 }
 
-export default class CategoryFacets extends Component {
-  render() {
-    return (
-      <Fragment>
-        <CategoryFacet
-          field="geographicalhierarchy"
-          delimitingCharacter=';'
-          numberOfValues={5}
-          basePath={[]}
-          filterByBasePath={false}
-          title='Geography'
-          id="geo"
-        />
-      </Fragment>
-    )
-  }
-}
+export default CategoryFacet;

@@ -10,7 +10,7 @@ class DateFacet extends Component {
       field: props.field,
       facetId: props.facetId,
       generateAutomaticRanges: props.generateAutomaticRanges,
-      currentValues: props.currentValues
+      currentValues: props.currentValues.map((value) => buildDateRange(value))
     };
     this.title = props.title;
     this.facetId = props.facetId;
@@ -61,23 +61,4 @@ class DateFacet extends Component {
   }
 }
 
-export default class DateFacets extends Component {
-  render() {
-    return (
-      <Fragment>
-        <DateFacet
-          title="Date Range"
-          field="date"
-          facetId="date"
-          generateAutomaticRanges={false}
-          currentValues={[
-            buildDateRange({ start: "2005/01/01", end: "2009/12/31" }),
-            buildDateRange({ start: "2010/01/01", end: "2014/12/31" }),
-            buildDateRange({ start: "2015/01/01", end: "2019/12/31" }),
-            buildDateRange({ start: "2020/01/01", end: "2021/12/31" }),
-          ]}
-        />
-      </Fragment>
-    )
-  }
-}
+export default DateFacet;

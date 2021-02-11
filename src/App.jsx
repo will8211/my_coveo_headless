@@ -10,9 +10,9 @@ import Sort from "./components/Sort";
 import ResultsList from "./components/ResultsList";
 import Pager from "./components/Pager";
 import ResultsPerPage from "./components/ResultsPerPage";
-import NumericFacets from "./components/NumericFacet";
-import DateFacets from "./components/DateFacet";
-import Facets from "./components/Facet";
+import NumericFacet from "./components/NumericFacet";
+import DateFacet from "./components/DateFacet";
+import Facet from "./components/Facet";
 import CategoryFacet from "./components/CategoryFacet";
 import FacetManager from "./components/FacetManager";
 import coveoLogo from "./coveo_logo.png";
@@ -54,10 +54,45 @@ class App extends Component {
             </div>
             <div className="col-md-3 order-md-1">
               <FacetManager>
-                <Facets />
-                <NumericFacets />
-                <DateFacets />
-                <CategoryFacet />
+                <Facet
+                  title="File Type"
+                  field="filetype"
+                  facetId="filetype"
+                />
+                <NumericFacet
+                  title="Youtube Views"
+                  field="ytviewcount"
+                  facetId="ytviewcount_numeric"
+                  numberOfValues={3}
+                  generateAutomaticRanges={false}
+                  currentValues={[
+                    { start: 0, end: 1000 },
+                    { start: 1000, end: 10_000 },
+                    { start: 10_000, end: 100_000 },
+                    { start: 100_000, end: 1_000_000 },
+                  ]}
+                />
+                <DateFacet
+                  title="Date Range"
+                  field="date"
+                  facetId="date"
+                  generateAutomaticRanges={false}
+                  currentValues={[
+                    { start: "2005/01/01", end: "2009/12/31" },
+                    { start: "2010/01/01", end: "2014/12/31" },
+                    { start: "2015/01/01", end: "2019/12/31" },
+                    { start: "2020/01/01", end: "2021/12/31" },
+                  ]}
+                />
+                <CategoryFacet
+                  field="geographicalhierarchy"
+                  delimitingCharacter=';'
+                  numberOfValues={5}
+                  basePath={[]}
+                  filterByBasePath={false}
+                  title='Geography'
+                  id="geo"
+                />
               </FacetManager>
             </div>
           </div>

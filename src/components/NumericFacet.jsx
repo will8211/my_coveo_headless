@@ -10,7 +10,7 @@ class NumericFacet extends Component {
       facetId: props.facetId,
       numberOfValues: props.numberOfValues,
       generateAutomaticRanges: props.generateAutomaticRanges,
-      currentValues: props.currentValues
+      currentValues: props.currentValues.map((value) => buildNumericRange(value))
     };
     this.title = props.title;
     this.facetId = props.facetId;
@@ -65,24 +65,4 @@ class NumericFacet extends Component {
   }
 }
 
-export default class NumericFacets extends Component {
-  render() {
-    return (
-      <Fragment>
-        <NumericFacet
-          title="Youtube Views"
-          field="ytviewcount"
-          facetId="ytviewcount_numeric"
-          numberOfValues={3}
-          generateAutomaticRanges={false}
-          currentValues={[
-            buildNumericRange({ start: 0, end: 1000 }),
-            buildNumericRange({ start: 1000, end: 10_000 }),
-            buildNumericRange({ start: 10_000, end: 100_000 }),
-            buildNumericRange({ start: 100_000, end: 1_000_000 }),
-          ]}
-        />
-      </Fragment>
-    )
-  }
-}
+export default NumericFacet;

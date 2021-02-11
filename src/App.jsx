@@ -17,7 +17,6 @@ import SearchBox from "./components/SearchBox";
 import Sort from "./components/Sort";
 import Tabs from "./components/Tabs";
 
-
 class App extends Component {
   render() {
     return (

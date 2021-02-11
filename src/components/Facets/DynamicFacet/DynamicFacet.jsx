@@ -2,7 +2,6 @@ import { Component } from 'react';
 import { engine } from "../../../engine";
 import { buildFacet } from '@coveo/headless';
 import FacetSearch from "../FacetSearch/FacetSearch"
-import './DynamicFacet.css'
 
 class DynamicFacet extends Component {
 
@@ -38,6 +37,7 @@ class DynamicFacet extends Component {
           type="checkbox"
           className="form-check-input"
           id={i}
+          checked={this.headlessDynamicFacet.isValueSelected(value)}
           onChange={() => this.headlessDynamicFacet.toggleSelect(value)}
         />
         <label

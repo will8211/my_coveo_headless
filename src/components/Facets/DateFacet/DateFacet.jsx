@@ -1,7 +1,6 @@
 import { Component, Fragment } from 'react';
 import { engine } from "../../../engine";
 import { buildDateFacet, buildDateRange } from '@coveo/headless';
-import './DateFacet.css'
 
 class DateFacet extends Component {
 
@@ -35,6 +34,7 @@ class DateFacet extends Component {
           type="checkbox"
           className="form-check-input"
           id={this.facetId + i}
+          checked={this.headlessDateFacet.isValueSelected(value)}
           onChange={() => this.headlessDateFacet.toggleSelect(value)}
         />
         <label

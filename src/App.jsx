@@ -2,6 +2,7 @@ import { Fragment, Component } from "react";
 import Tabs from "./components/Tabs/Tabs";
 import History from "./components/History/History";
 import SearchBox from "./components/SearchBox/SearchBox";
+import BreadcrumbManager from "./components/BreadcrumbManager/BreadcrumbManager";
 import DidYouMean from "./components/DidYouMean/DidYouMean";
 import QuerySummary from "./components/QuerySummary/QuerySummary";
 import QueryError from "./components/QueryError/QueryError";
@@ -31,6 +32,7 @@ class App extends Component {
         <div className="container">
           <SearchBox>
             <DidYouMean />
+            <BreadcrumbManager />
           </SearchBox>
           <br />
           <div className="row">

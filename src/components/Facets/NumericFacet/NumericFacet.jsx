@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import { engine } from "../../../engine";
 import { buildNumericFacet, buildNumericRange } from "@coveo/headless";
-import './NumericFacet.css'
 
 class NumericFacet extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class NumericFacet extends Component {
 
   numberWithCommas(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  }
 
   renderCheckboxes() {
     return this.state.values.map((value, i) => (
@@ -39,6 +38,7 @@ class NumericFacet extends Component {
           type="checkbox"
           className="form-check-input"
           id={this.facetId + i}
+          checked={this.headlessNumericFacet.isValueSelected(value)}
           onChange={() => this.headlessNumericFacet.toggleSelect(value)}
         />
         <label

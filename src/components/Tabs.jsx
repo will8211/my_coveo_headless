@@ -42,12 +42,12 @@ class Tab extends Component {
 export default class Tabs extends Component {
   render() {
     return (
-        <div className="navbar-nav">
-          <Tab tabExpression="" label="ALL CONTENT" />
-          <Tab tabExpression="@filetype==youtubevideo" label="YOUTUBE" />
-          <Tab tabExpression="@sfid" label="SALESFORCE" />
-          <Tab tabExpression="@filetype==pdf" label="PDF DOCS" />
-        </div>
+      <div className="navbar-nav">
+        <Tab tabExpression="" label="ALL CONTENT" />
+        <Tab tabExpression="@filetype==youtubevideo" label="YOUTUBE" />
+        <Tab tabExpression="@sfid" label="SALESFORCE" />
+        <Tab tabExpression="@filetype==pdf" label="PDF DOCS" />
+      </div>
     );
   }
 }

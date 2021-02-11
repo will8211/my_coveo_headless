@@ -112,6 +112,23 @@ class BreadcrumbManager extends Component {
     )
   }
 
+  renderClearAllButton() {
+    if (this.headlessBreadcrumbManager.hasBreadcrumbs()) {
+      return (
+        <button
+          className="btn badge badge-primary m-1"
+          onClick={() => {
+            this.headlessBreadcrumbManager.deselectAll();
+          }}
+        >
+          ✕ Clear all filters
+        </button>
+      )
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -119,6 +136,7 @@ class BreadcrumbManager extends Component {
         {this.renderDateFacetBreadcrumbs()}
         {this.renderNumericFacetBreadcrumb()}
         {this.renderCategoryFacetBreadcrumbs()}
+        {this.renderClearAllButton()}
       </div>
     )
   }

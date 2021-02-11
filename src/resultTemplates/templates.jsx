@@ -1,5 +1,5 @@
 import { ResultAnalyticsActions, ResultTemplatesHelpers } from "@coveo/headless";
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import pdfIcon from './icons/pdf.png';
 import youtubeIcon from './icons/youtube.png';
 import salesforceIcon from './icons/salesforce.png';

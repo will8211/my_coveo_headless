@@ -1,5 +1,5 @@
 import { Component, Fragment } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import {
   buildSort,
   buildDateSortCriterion,
@@ -7,7 +7,7 @@ import {
   buildFieldSortCriterion,
   SortOrder,
 } from '@coveo/headless';
-import './Sort.css'
+import '../styles/Sort.css'
 
 class Sort extends Component {
 

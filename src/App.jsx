@@ -1,21 +1,21 @@
 import { Fragment, Component } from "react";
-import Tabs from "./components/Tabs/Tabs";
-import History from "./components/History/History";
-import SearchBox from "./components/SearchBox/SearchBox";
-import BreadcrumbManager from "./components/BreadcrumbManager/BreadcrumbManager";
-import DidYouMean from "./components/DidYouMean/DidYouMean";
-import QuerySummary from "./components/QuerySummary/QuerySummary";
-import QueryError from "./components/QueryError/QueryError";
-import Sort from "./components/Sort/Sort";
-import ResultsList from "./components/ResultsList/ResultsList";
-import Pager from "./components/Pager/Pager";
-import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
-import NumericFacets from "./components/Facets/NumericFacet/NumericFacet";
+import Tabs from "./components/Tabs";
+import History from "./components/History";
+import SearchBox from "./components/SearchBox";
+import BreadcrumbManager from "./components/BreadcrumbManager";
+import DidYouMean from "./components/DidYouMean";
+import QuerySummary from "./components/QuerySummary";
+import QueryError from "./components/QueryError";
+import Sort from "./components/Sort";
+import ResultsList from "./components/ResultsList";
+import Pager from "./components/Pager";
+import ResultsPerPage from "./components/ResultsPerPage";
+import NumericFacets from "./components/NumericFacet";
+import DateFacets from "./components/DateFacet";
+import Facets from "./components/Facet";
+import CategoryFacet from "./components/CategoryFacet";
+import FacetManager from "./components/FacetManager";
 import coveoLogo from "./coveo_logo.png";
-import DateFacets from "./components/Facets/DateFacet/DateFacet";
-import DynamicFacets from "./components/Facets/DynamicFacet/DynamicFacet";
-import CategoryFacet from "./components/Facets/CategoryFacet/CategoryFacet";
-import FacetManager from "./components/Facets/FacetManager";
 
 class App extends Component {
   render() {
@@ -54,7 +54,7 @@ class App extends Component {
             </div>
             <div className="col-md-3 order-md-1">
               <FacetManager>
-                <DynamicFacets />
+                <Facets />
                 <NumericFacets />
                 <DateFacets />
                 <CategoryFacet />

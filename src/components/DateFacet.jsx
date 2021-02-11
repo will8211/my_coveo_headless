@@ -1,5 +1,5 @@
 import { Component, Fragment } from 'react';
-import { engine } from "../../../engine";
+import { engine } from "../engine";
 import { buildDateFacet, buildDateRange } from '@coveo/headless';
 
 class DateFacet extends Component {

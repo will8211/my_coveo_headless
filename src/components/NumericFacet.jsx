@@ -1,5 +1,5 @@
 import { Component, Fragment } from "react";
-import { engine } from "../../../engine";
+import { engine } from "../engine";
 import { buildNumericFacet, buildNumericRange } from "@coveo/headless";
 
 class NumericFacet extends Component {

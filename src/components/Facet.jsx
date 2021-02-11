@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import { engine } from "../../../engine";
+import { engine } from "../engine";
 import { buildFacet } from '@coveo/headless';
-import FacetSearch from "../FacetSearch/FacetSearch"
+import FacetSearch from "./FacetSearch"
 
-class DynamicFacet extends Component {
+class Facet extends Component {
 
   constructor(props) {
     super(props);
@@ -15,15 +15,15 @@ class DynamicFacet extends Component {
         numberOfValues: 5
       }
     };
-    this.headlessDynamicFacet = buildFacet(engine, { options });
-    this.state = this.headlessDynamicFacet.state;
+    this.headlessFacet = buildFacet(engine, { options });
+    this.state = this.headlessFacet.state;
     this.title = props.title;
     this.state.searchBoxValue = '';
   }
 
   componentDidMount() {
-    this.headlessDynamicFacet.subscribe(() => {
-      this.setState(this.headlessDynamicFacet.state);
+    this.headlessFacet.subscribe(() => {
+      this.setState(this.headlessFacet.state);
     });
   }
 
@@ -37,8 +37,8 @@ class DynamicFacet extends Component {
           type="checkbox"
           className="form-check-input"
           id={i}
-          checked={this.headlessDynamicFacet.isValueSelected(value)}
-          onChange={() => this.headlessDynamicFacet.toggleSelect(value)}
+          checked={this.headlessFacet.isValueSelected(value)}
+          onChange={() => this.headlessFacet.toggleSelect(value)}
         />
         <label
           className="form-check-label small"
@@ -58,9 +58,9 @@ class DynamicFacet extends Component {
             {this.title}
           </h6>
           <FacetSearch
-            updateText={this.headlessDynamicFacet.facetSearch.updateText}
-            search={this.headlessDynamicFacet.facetSearch.search}
-            select={this.headlessDynamicFacet.facetSearch.select}
+            updateText={this.headlessFacet.facetSearch.updateText}
+            search={this.headlessFacet.facetSearch.search}
+            select={this.headlessFacet.facetSearch.select}
             facetState={this.state.facetSearch}
           />
           {this.renderCheckboxes()}
@@ -70,10 +70,10 @@ class DynamicFacet extends Component {
   }
 }
 
-export default class DynamicFacets extends Component {
+export default class Facets extends Component {
   render() {
     return (
-      <DynamicFacet
+      <Facet
         title="File Type"
         field="filetype"
         facetId="filetype"

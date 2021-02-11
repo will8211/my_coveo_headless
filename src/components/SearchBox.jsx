@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildSearchBox } from "@coveo/headless";
-import "./SearchBox.css";
+import "../styles/SearchBox.css";
 class SearchBox extends Component {
 
   constructor(props) {

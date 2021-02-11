@@ -1,8 +1,8 @@
 import { Component, Fragment } from "react";
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildResultList, buildResultTemplatesManager } from "@coveo/headless";
-import { templates } from "./templates";
-import "./ResultsList.css";
+import { templates } from "../resultTemplates/templates";
+import "../styles/ResultsList.css";
 
 class ResultsList extends Component {
   constructor(props) {

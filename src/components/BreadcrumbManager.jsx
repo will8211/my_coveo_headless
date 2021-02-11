@@ -1,5 +1,5 @@
 import { Component, Fragment } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildBreadcrumbManager } from '@coveo/headless';
 
 class BreadcrumbManager extends Component {

@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildHistory } from '@coveo/headless';
-import './History.css'
+import '../styles/History.css'
 
 class History extends Component {
 

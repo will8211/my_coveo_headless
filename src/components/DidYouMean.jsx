@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildDidYouMean } from "@coveo/headless";
 
 class DidYouMean extends Component {

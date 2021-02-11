@@ -1,8 +1,8 @@
 import { Component, Fragment } from 'react';
-import { engine } from "../../../engine";
+import { engine } from "../engine";
 import { buildCategoryFacet } from '@coveo/headless';
-import './CategoryFacet.css'
-import FacetSearch from "../FacetSearch/FacetSearch"
+import '../styles/CategoryFacet.css'
+import FacetSearch from "./FacetSearch"
 
 class CategoryFacet extends Component {
 

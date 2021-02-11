@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildFacetManager } from "@coveo/headless";
 
 class FacetManager extends Component {

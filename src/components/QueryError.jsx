@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildQueryError } from '@coveo/headless';
 
 class QueryError extends Component {

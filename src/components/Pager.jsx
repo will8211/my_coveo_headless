@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { engine } from "../../engine";
+import { engine } from "../engine";
 import { buildPager } from "@coveo/headless";
-import "./Pager.css";
+import "../styles/Pager.css";
 
 class Pager extends Component {
   constructor(props) {

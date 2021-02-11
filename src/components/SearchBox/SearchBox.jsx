@@ -2,7 +2,6 @@ import { Component, Fragment } from 'react';
 import { engine } from "../../engine";
 import { buildSearchBox } from "@coveo/headless";
 import "./SearchBox.css";
-
 class SearchBox extends Component {
 
   constructor(props) {
@@ -10,7 +9,7 @@ class SearchBox extends Component {
 
     const options = {
       numberOfSuggestions: 5,
-      enableQuerySyntax: true
+      enableQuerySyntax: false
     };
 
     this.headlessSearchBox = buildSearchBox(engine, { options });
@@ -90,6 +89,7 @@ class SearchBox extends Component {
             onClick={this.headlessSearchBox.hideSuggestions}
           >↤</button>
         )}
+        {this.props.children}
       </Fragment>
     )
   }

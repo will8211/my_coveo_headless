@@ -7,8 +7,8 @@ class ResultsPerPage extends Component {
 
   constructor(props) {
     super(props);
-    const initialState = { numberOfResults: 5 };
-    this.choices = [5, 10, 25];
+    const initialState = { numberOfResults: 10 };
+    this.choices = [10, 25, 50];
     this.headlessResultsPerPage = buildResultsPerPage(engine, { initialState });
     this.state = this.headlessResultsPerPage.state;
   }

@@ -2,6 +2,7 @@ import { Fragment, Component } from "react";
 import Tabs from "./components/Tabs/Tabs";
 import History from "./components/History/History";
 import SearchBox from "./components/SearchBox/SearchBox";
+import DidYouMean from "./components/DidYouMean/DidYouMean";
 import QuerySummary from "./components/QuerySummary/QuerySummary";
 import QueryError from "./components/QueryError/QueryError";
 import Sort from "./components/Sort/Sort";
@@ -11,8 +12,9 @@ import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
 import NumericFacets from "./components/Facets/NumericFacet/NumericFacet";
 import coveoLogo from "./coveo_logo.png";
 import DateFacet from "./components/Facets/DateFacet/DateFacet";
+import DynamicFacet from "./components/Facets/DynamicFacet/DynamicFacet";
 import CategoryFacet from "./components/Facets/CategoryFacet/CategoryFacet";
-
+import FacetManager from "./components/Facets/FacetManager";
 
 class App extends Component {
   render() {
@@ -27,7 +29,9 @@ class App extends Component {
           </div>
         </nav>
         <div className="container">
-          <SearchBox />
+          <SearchBox>
+            <DidYouMean />
+          </SearchBox>
           <br />
           <div className="row">
             <div className="col-md-9 order-md-2">
@@ -47,9 +51,12 @@ class App extends Component {
               </div>
             </div>
             <div className="col-md-3 order-md-1">
-              <NumericFacets />
-              <DateFacet />
-              <CategoryFacet />
+              <FacetManager>
+                <DynamicFacet />
+                <NumericFacets />
+                <DateFacet />
+                <CategoryFacet />
+              </FacetManager>
             </div>
           </div>
         </div>

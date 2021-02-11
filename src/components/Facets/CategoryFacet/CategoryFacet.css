@@ -11,3 +11,7 @@
 .suggestion-item {
   width: 100%
 }
+
+.smaller-text {
+  font-size: 90%
+}

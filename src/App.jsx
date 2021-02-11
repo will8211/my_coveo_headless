@@ -11,8 +11,8 @@ import Pager from "./components/Pager/Pager";
 import ResultsPerPage from "./components/ResultsPerPage/ResultsPerPage";
 import NumericFacets from "./components/Facets/NumericFacet/NumericFacet";
 import coveoLogo from "./coveo_logo.png";
-import DateFacet from "./components/Facets/DateFacet/DateFacet";
-import DynamicFacet from "./components/Facets/DynamicFacet/DynamicFacet";
+import DateFacets from "./components/Facets/DateFacet/DateFacet";
+import DynamicFacets from "./components/Facets/DynamicFacet/DynamicFacet";
 import CategoryFacet from "./components/Facets/CategoryFacet/CategoryFacet";
 import FacetManager from "./components/Facets/FacetManager";
 
@@ -52,9 +52,9 @@ class App extends Component {
             </div>
             <div className="col-md-3 order-md-1">
               <FacetManager>
-                <DynamicFacet />
+                <DynamicFacets />
                 <NumericFacets />
-                <DateFacet />
+                <DateFacets />
                 <CategoryFacet />
               </FacetManager>
             </div>

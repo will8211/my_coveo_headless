@@ -1,21 +1,22 @@
 import { Fragment, Component } from "react";
-import Tabs from "./components/Tabs";
-import History from "./components/History";
-import SearchBox from "./components/SearchBox";
-import BreadcrumbManager from "./components/BreadcrumbManager";
-import DidYouMean from "./components/DidYouMean";
-import QuerySummary from "./components/QuerySummary";
-import QueryError from "./components/QueryError";
-import Sort from "./components/Sort";
-import ResultsList from "./components/ResultsList";
-import Pager from "./components/Pager";
-import ResultsPerPage from "./components/ResultsPerPage";
-import NumericFacet from "./components/NumericFacet";
-import DateFacet from "./components/DateFacet";
-import Facet from "./components/Facet";
-import CategoryFacet from "./components/CategoryFacet";
-import FacetManager from "./components/FacetManager";
 import coveoLogo from "./coveo_logo.png";
+import BreadcrumbManager from "./components/BreadcrumbManager";
+import CategoryFacet from "./components/CategoryFacet";
+import DateFacet from "./components/DateFacet";
+import DidYouMean from "./components/DidYouMean";
+import Facet from "./components/Facet";
+import FacetManager from "./components/FacetManager";
+import History from "./components/History";
+import NumericFacet from "./components/NumericFacet";
+import Pager from "./components/Pager";
+import QueryError from "./components/QueryError";
+import QuerySummary from "./components/QuerySummary";
+import ResultsList from "./components/ResultsList";
+import ResultsPerPage from "./components/ResultsPerPage";
+import SearchBox from "./components/SearchBox";
+import Sort from "./components/Sort";
+import Tabs from "./components/Tabs";
+
 
 class App extends Component {
   render() {

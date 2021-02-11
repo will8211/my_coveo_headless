@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
+
         <nav className="navbar navbar-expand-sm navbar-dark 
                         justify-content-between">
           <img className="navbar-brand" src={coveoLogo} alt="Coveo" />
@@ -29,13 +30,17 @@ class App extends Component {
             <History />
           </div>
         </nav>
+
         <div className="container">
+
           <SearchBox>
             <DidYouMean />
             <BreadcrumbManager />
           </SearchBox>
           <br />
+
           <div className="row">
+
             <div className="col-md-9 order-md-2">
               <div className="row justify-content-between">
                 <div className="col-md-6">
@@ -52,6 +57,7 @@ class App extends Component {
                 <ResultsPerPage />
               </div>
             </div>
+
             <div className="col-md-3 order-md-1">
               <FacetManager>
                 <Facet
@@ -95,8 +101,11 @@ class App extends Component {
                 />
               </FacetManager>
             </div>
+
           </div>
+
         </div>
+
       </Fragment>
     );
   }

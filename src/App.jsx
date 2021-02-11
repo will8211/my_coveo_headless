@@ -15,7 +15,7 @@ import ResultsList from "./components/ResultsList";
 import ResultsPerPage from "./components/ResultsPerPage";
 import SearchBox from "./components/SearchBox";
 import Sort from "./components/Sort";
-import Tabs from "./components/Tabs";
+import Tab from "./components/Tab";
 
 class App extends Component {
   render() {
@@ -25,7 +25,12 @@ class App extends Component {
         <nav className="navbar navbar-expand-sm navbar-dark 
                         justify-content-between">
           <img className="navbar-brand" src={coveoLogo} alt="Coveo" />
-          <Tabs />
+          <div className="navbar-nav">
+            <Tab tabExpression="" label="ALL CONTENT" />
+            <Tab tabExpression="@filetype==youtubevideo" label="YOUTUBE" />
+            <Tab tabExpression="@sfid" label="SALESFORCE" />
+            <Tab tabExpression="@filetype==pdf" label="PDF DOCS" />
+          </div>
           <div className="nav-item nav-link">
             <History />
           </div>
@@ -96,8 +101,7 @@ class App extends Component {
                   numberOfValues={5}
                   basePath={[]}
                   filterByBasePath={false}
-                  title='Geography'
-                  id="geo"
+                  title="Geography"
                 />
               </FacetManager>
             </div>

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { engine } from "../engine";
 import { buildTab } from "@coveo/headless";
-import "../styles/Tabs.css";
+import "../styles/Tab.css";
 
 class Tab extends Component {
 
@@ -39,15 +39,4 @@ class Tab extends Component {
   }
 }
 
-export default class Tabs extends Component {
-  render() {
-    return (
-      <div className="navbar-nav">
-        <Tab tabExpression="" label="ALL CONTENT" />
-        <Tab tabExpression="@filetype==youtubevideo" label="YOUTUBE" />
-        <Tab tabExpression="@sfid" label="SALESFORCE" />
-        <Tab tabExpression="@filetype==pdf" label="PDF DOCS" />
-      </div>
-    );
-  }
-}
+export default Tab;

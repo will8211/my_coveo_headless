@@ -1,6 +1,7 @@
 import { Component, Fragment } from 'react';
 import { engine } from "../engine";
 import { buildBreadcrumbManager } from '@coveo/headless';
+import '../styles/BreadcrumbManager.css'
 
 class BreadcrumbManager extends Component {
 
@@ -116,7 +117,7 @@ class BreadcrumbManager extends Component {
     if (this.headlessBreadcrumbManager.hasBreadcrumbs()) {
       return (
         <button
-          className="btn badge badge-primary m-1"
+          className="btn badge badge-primary m-1 clear-button"
           onClick={() => {
             this.headlessBreadcrumbManager.deselectAll();
           }}

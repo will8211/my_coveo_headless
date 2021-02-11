@@ -18,7 +18,6 @@ class CategoryFacet extends Component {
       basePath: props.basePath,
       filterByBasePath: props.filterByBasePath
     }
-    this.id = props.id
     this.title = props.title
     this.headlessCategoryFacet = buildCategoryFacet(engine, { options });
     this.state = this.headlessCategoryFacet.state;
@@ -34,7 +33,7 @@ class CategoryFacet extends Component {
 
   renderValues() {
     return this.state.values.map((val, i) => (
-      <Fragment key={this.id + i}>
+      <Fragment key={i}>
         <button
           className="btn btn-dark bg-transparent btn-sm text-left small"
           onClick={() => this.headlessCategoryFacet.toggleSelect(val)}
@@ -100,7 +99,7 @@ class CategoryFacet extends Component {
             updateText={this.headlessCategoryFacet.facetSearch.updateText}
             search={this.headlessCategoryFacet.facetSearch.search}
             select={this.headlessCategoryFacet.facetSearch.select}
-            facetState={this.state.facetSearch}
+            facetSearchState={this.state.facetSearch}
           />
           <div>
             {this.renderBackButton()}

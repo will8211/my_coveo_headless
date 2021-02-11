@@ -32,7 +32,9 @@ class SearchBox extends Component {
             className="btn btn-primary"
             onClick={this.headlessSearchBox.submit}
             disabled={this.state.searchAsYouType}
-          >Search</button>
+          >
+            Search
+          </button>
         </div>
 
         <input
@@ -52,11 +54,14 @@ class SearchBox extends Component {
           <button
             className="btn btn-outline-secondary"
             onClick={this.headlessSearchBox.clear}
-          >✕</button>
+          >
+            ✕
+          </button>
         </div>
       </div >
     )
   }
+
 
   renderSuggestions() {
     const badgeClasses = "btn badge badge-secondary m-1";
@@ -69,7 +74,9 @@ class SearchBox extends Component {
           <button
             className={badgeClasses}
             onClick={this.headlessSearchBox.showSuggestions}
-          >↦</button>
+          >
+            ↦
+          </button>
         )}
 
         {this.state.suggestions.map((suggestion) => (
@@ -80,14 +87,18 @@ class SearchBox extends Component {
               this.headlessSearchBox.updateText(suggestion.rawValue);
               this.headlessSearchBox.submit();
             }}
-          >{suggestion.rawValue}</button>
+          >
+            {suggestion.rawValue}
+          </button>
         ))}
 
         {this.state.suggestions.length > 0 && (
           <button
             className={badgeClasses}
             onClick={this.headlessSearchBox.hideSuggestions}
-          >↤</button>
+          >
+            ↤
+          </button>
         )}
         {this.props.children}
       </Fragment>
@@ -110,7 +121,9 @@ class SearchBox extends Component {
           <label
             className="form-check-label"
             htmlFor="searchAsYouType"
-          >Search as you type</label>
+          >
+            Search as you type
+          </label>
         </div>
       </div>
     )
@@ -118,14 +131,14 @@ class SearchBox extends Component {
 
   render() {
     return (
-      <div className="card mt-3">
+      <div className="card mt-4">
         <div className="card-body">
           {this.renderTextInput()}
           <div className="row">
             <div className="col-md-8">
-              {this.renderSuggestions()}
+              {this.props.children}
             </div>
-            <div className="col-md-4">
+            <div className="col-md-3">
               <span className="float-right">
                 {this.renderSearchControl()}
               </span>

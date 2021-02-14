@@ -22,6 +22,46 @@ class FacetSearch extends Component {
     return null;
   }
 
+  handleChange = (e) => {
+    this.props.updateText(e.target.value);
+    this.setState({ 'searchBoxValue': e.target.value });
+    this.setState({ showSuggestions: true });
+    this.props.search();
+  }
+
+  handleKeyDown = (e) => {
+    if ((e.key === 'Enter' || e.key === 'Tab') &&
+      this.state.searchBoxValue.length > 0 &&
+      this.state.facetSearch.values.length > 0
+    ) {
+      const value = this.state.facetSearch.values[0];
+      this.makeSelection(value);
+    }
+  }
+
+  makeSelection = (value) => {
+    this.props.updateText(value.rawValue);
+    this.props.select(value);
+    this.setState({ 'showSuggestions': false });
+    this.setState({ 'searchBoxValue': value.rawValue });
+  }
+
+  handleFocus = () => {
+    if (this.state.searchBoxValue.length > 0) {
+      this.setState({ showSuggestions: true });
+    }
+  }
+
+  handleBlur = () => {
+    if (this.state.searchBoxValue.length > 0) {
+      this.setState({ showSuggestions: false });
+    }
+  }
+
+  handleSuggestionClick = (value) => {
+    this.makeSelection(value);
+  }
+
   renderSuggestions = () => {
     return (
       <div className="suggestions">
@@ -43,46 +83,6 @@ class FacetSearch extends Component {
     )
   }
 
-  handleChange = (e) => {
-    this.props.updateText(e.target.value);
-    this.setState({ 'searchBoxValue': e.target.value });
-    this.setState({ showSuggestions: true });
-    this.props.search();
-  }
-
-  handleKeyUp = (e) => {
-    if (e.key === 'Enter' &&
-      this.state.searchBoxValue.length > 0 &&
-      this.state.facetSearch.values.length > 0
-    ) {
-      const value = this.state.facetSearch.values[0];
-      this.makeSelection(value);
-    }
-  }
-
-  handleSuggestionClick = (value) => {
-    this.makeSelection(value);
-  }
-
-  makeSelection = (value) => {
-    this.props.updateText(value.rawValue);
-    this.props.select(value);
-    this.setState({ 'showSuggestions': false });
-    this.setState({ 'searchBoxValue': value.rawValue });
-  }
-
-  handleFocus = () => {
-    if (this.state.searchBoxValue.length > 0) {
-      this.setState({ showSuggestions: true });
-    }
-  }
-  handleBlur = () => {
-    if (this.state.searchBoxValue.length > 0) {
-      this.setState({ showSuggestions: false });
-    }
-  }
-
-
   render() {
     return (
       <Fragment>
@@ -92,9 +92,9 @@ class FacetSearch extends Component {
           placeholder="Search"
           className="form-control form-control-sm"
           onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
+          // onBlur={this.handleBlur}
           onChange={(e) => this.handleChange(e)}
-          onKeyUp={(e) => this.handleKeyUp(e)}
+          onKeyDown={(e) => this.handleKeyDown(e)}
         />
         {this.renderSuggestions()}
       </Fragment>

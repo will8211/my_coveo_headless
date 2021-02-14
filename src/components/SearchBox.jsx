@@ -42,6 +42,8 @@ class SearchBox extends Component {
             this.headlessSearchBox.submit();
             this.setState({ showSuggestions: true });
           }}
+          onFocus={this.handleFocus}
+          // onBlur={this.handleBlur}
         />
 
         <div className="input-group-append">
@@ -57,24 +59,29 @@ class SearchBox extends Component {
   }
 
   renderSuggestions = () => {
-    return (
-      <div className="suggestions">
-        {this.state.suggestions.length > 0 &&
-          this.state.showSuggestions === true &&
-          this.state.suggestions.map((suggestion, i) => (
-            <Fragment key={i}>
-              <button
-                className="suggestion-item btn btn-secondary btn-sm text-left"
-                onClick={() => this.handleSuggestionClick(suggestion)}
-              >
-                {suggestion.rawValue}
-              </button>
-              <br />
-            </Fragment>
-          ))
-        }
-      </div>
-    )
+    if (this.state.showSuggestions && this.state.value.length > 0) {
+      return (
+        <div className="suggestions">
+          {this.state.suggestions.length > 0 &&
+            this.state.showSuggestions === true &&
+            this.state.suggestions.map((suggestion, i) => (
+              <Fragment key={i}>
+                <button
+                  className="suggestion-item btn btn-secondary btn-sm text-left"
+                  onClick={() => this.handleSuggestionClick(suggestion)}
+                >
+                  {suggestion.rawValue}
+                </button>
+                <br />
+              </Fragment>
+            ))
+          }
+        </div>
+      )
+    }
+    else {
+      return null;
+    }
   }
 
   handleSuggestionClick = (selection) => {
@@ -82,6 +89,18 @@ class SearchBox extends Component {
     this.headlessSearchBox.submit();
     this.setState({ 'showSuggestions': false });
     this.setState({ 'value': selection.rawValue });
+  }
+
+  handleFocus = () => {
+    if (this.state.value.length > 0) {
+      this.setState({ showSuggestions: true });
+    }
+  }
+
+  handleBlur = () => {
+    if (this.state.value.length > 0) {
+      this.setState({ showSuggestions: false });
+    }
   }
 
   render() {

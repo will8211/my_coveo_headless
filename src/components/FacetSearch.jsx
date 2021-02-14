@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import "../styles/FacetSearch.css";
 
 class FacetSearch extends Component {
 
@@ -42,8 +43,6 @@ class FacetSearch extends Component {
     )
   }
 
-
-
   handleChange = (e) => {
     this.props.updateText(e.target.value);
     this.setState({ 'searchBoxValue': e.target.value });
@@ -77,6 +76,12 @@ class FacetSearch extends Component {
       this.setState({ showSuggestions: true });
     }
   }
+  handleBlur = () => {
+    if (this.state.searchBoxValue.length > 0) {
+      this.setState({ showSuggestions: false });
+    }
+  }
+
 
   render() {
     return (
@@ -84,8 +89,10 @@ class FacetSearch extends Component {
         <input
           type="text"
           value={this.state.searchBoxValue}
+          placeholder="Search"
           className="form-control form-control-sm"
           onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onChange={(e) => this.handleChange(e)}
           onKeyUp={(e) => this.handleKeyUp(e)}
         />

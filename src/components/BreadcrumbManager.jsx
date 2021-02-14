@@ -95,7 +95,7 @@ class BreadcrumbManager extends Component {
       <Fragment>
         {this.state.categoryFacetBreadcrumbs.map((field, i) => (
           <Fragment key={i}>
-            <span>{field.field}:</span>
+            <span className="smaller-text">{field.field}:</span>
             {field.path.map((item, i) => (
               <button
                 key={i}
@@ -122,7 +122,7 @@ class BreadcrumbManager extends Component {
             this.headlessBreadcrumbManager.deselectAll();
           }}
         >
-          ✕ Clear all filters
+          Clear all filters&nbsp;&nbsp;✕
         </button>
       )
     } else {
@@ -132,7 +132,7 @@ class BreadcrumbManager extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mt-1">
         {this.renderFacetBreadcrumbs()}
         {this.renderDateFacetBreadcrumbs()}
         {this.renderNumericFacetBreadcrumb()}

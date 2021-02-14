@@ -20,7 +20,7 @@ class DidYouMean extends Component {
     if (this.state.hasQueryCorrection) {
       return (
         <div>
-          Text was corrected to: <b>{this.state.wasCorrectedTo}</b>
+          Text was corrected to: <b>{this.state.queryCorrection.correctedQuery}</b>
         </div>
       )
     } else {

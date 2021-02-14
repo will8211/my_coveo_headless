@@ -14,7 +14,6 @@ import QuerySummary from "./components/QuerySummary";
 import ResultsList from "./components/ResultsList";
 import ResultsPerPage from "./components/ResultsPerPage";
 import SearchBox from "./components/SearchBox";
-import Sort from "./components/Sort";
 import Tab from "./components/Tab";
 
 class App extends Component {
@@ -48,11 +47,8 @@ class App extends Component {
 
             <div className="col-md-9 order-md-2">
               <div className="row justify-content-between">
-                <div className="col-md-6">
+                <div className="col-md-12">
                   <QuerySummary />
-                </div>
-                <div className="col-md-6">
-                  <Sort />
                 </div>
               </div>
               <QueryError />

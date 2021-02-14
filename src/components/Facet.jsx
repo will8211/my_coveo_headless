@@ -63,7 +63,9 @@ class Facet extends Component {
             select={this.headlessFacet.facetSearch.select}
             facetSearchState={this.state.facetSearch}
           />
-          {this.renderCheckboxes()}
+          <div className="mt-2">
+            {this.renderCheckboxes()}
+          </div>
         </div>
       </div>
     );

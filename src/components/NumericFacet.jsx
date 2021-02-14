@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
 import { engine } from "../engine";
 import { buildNumericFacet, buildNumericRange } from "@coveo/headless";
 

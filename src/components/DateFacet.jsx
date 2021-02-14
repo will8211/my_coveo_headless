@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import { engine } from "../engine";
 import { buildDateFacet, buildDateRange } from '@coveo/headless';
 

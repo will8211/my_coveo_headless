@@ -101,7 +101,7 @@ class CategoryFacet extends Component {
             select={this.headlessCategoryFacet.facetSearch.select}
             facetSearchState={this.state.facetSearch}
           />
-          <div>
+          <div className="mt-1">
             {this.renderBackButton()}
             {this.renderValues()}
             {this.renderMoreLessButtons()}

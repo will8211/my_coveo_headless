@@ -39,11 +39,11 @@ class QuerySummary extends Component {
     }
 
     return (
-      <p className="small summary-p"> {summary}
+      <span className="small"> {summary}
         {hasQuery && "for"}
         <span className="font-weight-bold"> {query} </span>
           in {durationInSeconds} seconds
-      </p>)
+      </span>)
 
 
   }
